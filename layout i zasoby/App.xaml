@@ -4,6 +4,12 @@
              xmlns:local="clr-namespace:layout_i_zasoby"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+        <Style TargetType="{x:Type TextBlock}" x:Key="TextBlockBaseStyle" >
+
+            <Setter Property="Foreground" Value="green"/>
+            
+           
+        </Style>
          
     </Application.Resources>
 </Application>

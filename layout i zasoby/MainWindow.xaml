@@ -4,9 +4,83 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:layout_i_zasoby"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        mc:Ignorable="d" 
+        Title="layout i zasoby" Height="550" Width="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Column="1" Grid.Row="1" FontSize="30" 
+                   Text="Konrad Greniuk" Grid.ColumnSpan="3"
+                   Margin="0,0,0,10"/>
+
+        <TextBlock Grid.Column="1" Grid.Row="2" FontWeight="Bold"
+                   Text="First Name" />
+
+        <TextBox x:Name="FirsNameText" Grid.Column="2" Grid.Row="2"
+                 Width="150"/>
+
+        
+        <Button x:Name="submitButton" Content="Run Me" Grid.Column="1"
+                Grid.Row="3" Grid.ColumnSpan="2" Margin="10" Click="submitButton_Click"
+                />
+        <WrapPanel Grid.Column="3" Grid.Row="1" Orientation="Horizontal"
+                   ItemWidth="100">
+            <Button  Click="Button_Click"  Background="#FFB92929" FontSize="20" >Button1</Button>
+            <Button Content="Content" Background="Red">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Style.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" To="CadetBlue"/>
+                                            <ColorAnimation Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" To="Green"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <Button  Click="Button_Click" >Button3</Button>
+            <Button  Click="Button_Click" >Button4</Button>
+        </WrapPanel>
+        <Label Grid.Column="4" Grid.Row="1" FontWeight="Bold" FontSize="24">
+        <StackPanel >
+                <Label Content="_Button1" Target="{Binding ElementName=Button1}" Foreground="#FF57BB34" />
+                <TextBox Name="Button1" Text="Kolor czerwony" />
+
+                <Label Content="_Button2" Target="{Binding ElementName=Button2}" />
+                <TextBox Name="Button2" Text="Zmienia tlo"/>
+
+                <Label Content="_Button3" Target="{Binding ElementName=Button3}" />
+                <TextBox Name="Button3" />
+
+                <Label Content="_Button4" Target="{Binding ElementName=Button4}" />
+                <TextBox Name="Button4" />
+
+
+            </StackPanel>
+        </Label>
 
     </Grid>
 </Window>
